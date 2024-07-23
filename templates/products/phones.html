@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Devices Store</title>
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'pages'  %}"
+            >Smart Devices Store</a
+          >
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'pages'  %}">Home</a></li>
+            <li class="dropdown active">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                >Products<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li class="active">
+                  <a href="{% url 'phones'  %}">Phones</a>
+                </li>
+                <li><a href="{% url 'tablets'  %}">Tablets</a></li>
+                <li><a href="{% url 'watches'  %}">Watches</a></li>
+                <li><a href="{% url 'airpods'  %}">Airpods</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'blog'  %}">Blog</a></li>
+            <li><a href="{% url 'about'  %}">About</a></li>
+            <li><a href="{% url 'contact'  %}">Contact Us</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="{% url 'account'  %}">
+                <span class="glyphicon glyphicon-user"></span> Profile
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'signup'  %}">
+                <img
+                  width="20px"
+                  height="20px"
+                  src="https://img.icons8.com/officel/20/add-user-male.png"
+                  alt="add-user-male"
+                />
+                Sign Up</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'login'  %}"
+                ><span class="glyphicon glyphicon-log-in"></span> Login</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'cart'  %}"
+                ><i
+                  class="fa fa-shopping-cart"
+                  style="font-size: 18px; color: white"
+                  >cart</i
+                ></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div>
+      {% block content1 %} {% for cover in phonescovers %}
+      <img src="{{ cover.image.url }}" alt="{{ cover.name }}" width="100%" />
+      {% endfor %} {% endblock %}
+    </div>
+    <br />
+    <br />
+    <div class="container">
+      <div class="row">
+        {% block content %} {% for phone in phones %}
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img
+              src="{{ phone.image.url }}"
+              alt="{{ phone.name }}"
+              style="width: 100%; height: 480px"
+            />
+            <div class="caption text-center">
+              <h5>{{ phone.name }}</h5>
+              <br />
+              <p class="left">Price: {{ phone.price }} LE</p>
+              <p class="right">
+                <a href="{% url 'phone_detail' phone_name=phone.name %}">
+                  <button class="btn btn-default btn-sm">Quik View</button>
+                </a>
+                {% comment %}
+                <button
+                  type="button"
+                  class="btn btn-default btn-sm"
+                  data-toggle="modal"
+                  data-target="#{{phone.pk}}"
+                >
+                  Quik View
+                </button>
+                {% endcomment %}
+              </p>
+              {% comment %}
+              <div class="modal fade" id="{{phone.pk}}" role="dialog">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                      </button>
+                      <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <img
+                            src="{{ phone.image.url }}"
+                            alt="{{ phone.name }}"
+                            style="width: 100%"
+                          />
+                        </div>
+                        <div class="col-sm-5">
+                          <br /><br />
+                          <h4>{{ phone.descrip }}</h4>
+                          <br /><br />
+                          <p>Price: {{ phone.price }} LE</p>
+                          <br /><br />
+                          <button type="button" class="btn btn-default btn-sm">
+                            <span
+                              class="glyphicon glyphicon-shopping-cart"
+                            ></span>
+                            <b> Add to Cart </b>
+                          </button>
+                        </div>
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endcomment %}
+              <br />
+            </div>
+          </div>
+        </div>
+        {% endfor %} {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

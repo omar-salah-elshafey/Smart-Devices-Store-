@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Devices Store</title>
+    <script src="{% static 'js/js.js' %}"></script>
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'pages'  %}"
+            >Smart Devices Store</a
+          >
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'pages'  %}">Home</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                >Products<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'phones'  %}">Phones</a></li>
+                <li><a href="{% url 'tablets'  %}">Tablets</a></li>
+                <li><a href="{% url 'watches'  %}">Watches</a></li>
+                <li><a href="{% url 'airpods'  %}">Airpods</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'blog'  %}">Blog</a></li>
+            <li><a href="{% url 'about'  %}">About</a></li>
+            <li><a href="{% url 'contact'  %}">Contact Us</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="{% url 'account'  %}">
+                <span class="glyphicon glyphicon-user"></span> Profile
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'signup'  %}">
+                <img
+                  width="20px"
+                  height="20px"
+                  src="https://img.icons8.com/officel/20/add-user-male.png"
+                  alt="add-user-male"
+                />
+                Sign Up</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'login'  %}"
+                ><span class="glyphicon glyphicon-log-in"></span> Login</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'cart'  %}"
+                ><i
+                  class="fa fa-shopping-cart"
+                  style="font-size: 18px; color: white"
+                  >cart</i
+                ></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container" style="margin-top: 60px; padding-bottom: 30px">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h2 class="jumbotron text-center">Account Page</h2>
+          <hr />
+
+          <!-- Account Information -->
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Account Information</h3></div>
+            <div class="panel-body row">
+              <!-- Display user information here -->
+              <div class="col-sm-4">
+                <img
+                  src="{% static 'images/profile.jpg' %}"
+                  alt="Profile Photo"
+                  width="100%"
+                />
+              </div>
+              <div class="col-sm-5">
+                <label>Name: John Doe</label>
+                <label>Email: johndoe@example.com</label>
+                <label>Phone Number: 01012345678</label>
+                <label>Address: Cairo, Nasr City</label>
+              </div>
+              <!-- Add more fields as needed -->
+            </div>
+          </div>
+
+          <!-- Change Password Form -->
+          <div class="panel panel-default">
+            <div class="panel-heading"><h4>Change Password</h4></div>
+            <div class="panel-body">
+              <!-- Change password form goes here -->
+              <form>
+                <div class="form-group">
+                  <label for="currentPassword">Current Password:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="currentPassword"
+                    name="currentPassword"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="newPassword">New Password:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="newPassword"
+                    name="newPassword"
+                    required
+                  />
+                </div>
+                <!-- Add more fields as needed -->
+                <button type="submit" class="btn btn-primary">
+                  Change Password
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Logout Button -->
+          <a href="#" class="btn btn-danger pull-right"
+            >Logout <span class="glyphicon glyphicon-log-out"></span
+          ></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

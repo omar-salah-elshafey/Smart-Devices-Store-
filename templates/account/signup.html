@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart Devices Store</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="{% static 'js/js.js' %}"></script>
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="js.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'pages'  %}"
+            >Smart Devices Store</a
+          >
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'pages'  %}">Home</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                >Products<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'phones'  %}">Phones</a></li>
+                <li><a href="{% url 'tablets'  %}">Tablets</a></li>
+                <li><a href="{% url 'watches'  %}">Watches</a></li>
+                <li><a href="{% url 'airpods'  %}">Airpods</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'blog'  %}">Blog</a></li>
+            <li><a href="{% url 'about'  %}">About</a></li>
+            <li><a href="{% url 'contact'  %}">Contact Us</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="{% url 'account'  %}">
+                <span class="glyphicon glyphicon-user"></span> Profile
+              </a>
+            </li>
+            <li class="active">
+              <a href="{% url 'signup'  %}">
+                <img
+                  width="20px"
+                  height="20px"
+                  src="https://img.icons8.com/officel/20/add-user-male.png"
+                  alt="add-user-male"
+                />
+                Sign Up</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'login'  %}"
+                ><span class="glyphicon glyphicon-log-in"></span> Login</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'cart'  %}"
+                ><i
+                  class="fa fa-shopping-cart"
+                  style="font-size: 18px; color: white"
+                  >cart</i
+                ></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <form action="" method="post" class="loginform">
+            {% csrf_token %}
+            <div class="jumbotron text-center">
+              <h2>Sign Up</h2>
+            </div>
+            <label for="">First Name</label><br />
+            <input
+              class="intxtsignup"
+              type="text"
+              name="fname"
+              placeholder="Enter Your First Name.."
+              required
+            />
+            <label for="">Last Name</label><br />
+            <input
+              class="intxtsignup"
+              type="text"
+              name="lname"
+              placeholder="Enter Your Last Name.."
+              required
+            />
+            <label for="">Phone Number</label><br />
+            <input
+              class="intxtsignup"
+              type="text"
+              name="phone"
+              placeholder="Enter Your Phone Number.."
+              required
+            />
+            <label for="">Email</label><br />
+            <input
+              class="intxtsignup"
+              type="email"
+              name="email"
+              placeholder="Enter Your Email.."
+              required
+            />
+            <label for="">Password</label><br />
+            <input
+              class="intxtsignup"
+              type="password"
+              name="password"
+              placeholder="Enter Your Password.."
+              required
+            />
+            <label for="">Confim Password</label><br />
+            <input
+              class="intxtsignup"
+              type="password"
+              name="password2"
+              placeholder="Enter Your Password again!.."
+              required
+            />
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="margin-left: 38%"
+            >
+              Sign Up
+            </button>
+            <div>
+              Already have an account?
+              <a href="{% url 'login'  %}"> Sign In!</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
